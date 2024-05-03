@@ -1,7 +1,6 @@
 ---
 # try also 'default' to start simple
 theme: dracula
-# random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 title: Git & GitHub Actios
 info: |
@@ -23,7 +22,7 @@ Laboratorio de git
 ## Git - Configuración del entorno
 
  💡 Existen 3 archivos donde se puede guardar la configuración, Para ver la configuración completa se usa el comando `git config --list`
-
+````md magic-move
 ```bash{hide|1-2|4-5|7-8|all}
 # A nivel SO  Archivo /etc/gitconfig
 git config --system
@@ -34,6 +33,12 @@ git config --global
 # A nivel de repositorio .git/config
 git config --local
 ```
+```bash
+# A nivel de un usuario  ~/.config/git/config
+git config --global
+```
+
+````
 
 ---
 
@@ -73,7 +78,6 @@ git config --global credential.helper cache
 ```mermaid
 ---
 title: Branch
-
 ---
 gitGraph LR:
        commit id: "1"
@@ -212,6 +216,7 @@ Directorio que hace referencia a todos los objetos del repositorio (Tags, branch
 
 El mensaje de un `commit` consiste en 3 diferentes partes separadas por una linea en blanco: el `titulo`, un `cuerpo` opcional y un `pie` opcional.
 
+````md magic-move
 ```bash{none|1|3|5|all}
 <type>[optional scope]: <description>
 
@@ -219,6 +224,28 @@ El mensaje de un `commit` consiste en 3 diferentes partes separadas por una line
 
 [optional footer(s)]
 ```
+```bash
+Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the two together.
+
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+or "Fixes bug."  This convention matches up with commit messages generated
+by commands like git merge and git revert.
+
+Further paragraphs come after blank lines.
+
+- Typically a hyphen or asterisk is used for the bullet, followed by a
+  single space, with blank lines in between, but conventions vary here
+
+If you use an issue tracker, add a reference(s) to them at the bottom,
+like so:
+```
+````
 
 > 💡 En caso de querer sobrescribir el commit utiliza el comando
 `git commit -ammend -m <title> -m <description>`
@@ -241,47 +268,6 @@ El mensaje de un `commit` consiste en 3 diferentes partes separadas por una line
 
 ---
 
-```bash
-Capitalized, short (50 chars or less) summary
-
-More detailed explanatory text, if necessary.  Wrap it to about 72
-characters or so.  In some contexts, the first line is treated as the
-subject of an email and the rest of the text as the body.  The blank
-line separating the summary from the body is critical (unless you omit
-the body entirely); tools like rebase can get confused if you run the
-two together.
-
-Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
-or "Fixes bug."  This convention matches up with commit messages generated
-by commands like git merge and git revert.
-
-Further paragraphs come after blank lines.
-
-- Bullet points are okay, too
-
-- Typically a hyphen or asterisk is used for the bullet, followed by a
-  single space, with blank lines in between, but conventions vary here
-
-- Use a hanging indent
-
-If you use an issue tracker, add a reference(s) to them at the bottom,
-like so:
-```
-
----
-
-### Regresar a otro commit
-
-```bash{none|1-2|4-5|all}
-#Buscamos el id del commit deseado
-git checkout <id-del-commit>
-
-#Para regresar al HEAD o commit anterior(original)
-git switch -
-```
-
----
-
 ### Tipos
 
 - **feat**: Una nueva característica para el usuario.
@@ -294,6 +280,24 @@ git switch -
 - **style**: Cambios de formato, tabulaciones, espacios o puntos y coma, etc; no afectan al usuario.
 - **test**: Añade tests o refactoriza uno existente.
   
+
+
+
+---
+
+### Regresar a otro commit
+
+```bash{none|1-2|4-5|all}
+#Desplegamos el historial de la lista de commits
+git log
+
+#Buscamos el id del commit deseado
+git checkout <id-del-commit>
+
+#Para regresar al HEAD o commit anterior(original)
+git switch -
+```
+
 ---
 
 ### Revertir cambios
@@ -321,7 +325,11 @@ El comando git stash almacena temporalmente (stash) los cambios que hayas efectu
 - `git stash apply` Aplica los cambios del stash
 - `git stash pop` Aplica los cambios del stash en la rama actual y elimina el stash de la memoria temporal
 
-```bash
+---
+
+# Uso de un Stash
+
+```bash{1|2-4|6|all}
 $ git stash list
 stash@{0}: On main: add style to our site
 stash@{1}: WIP on main: 5002d47 our new homepage
@@ -329,6 +337,7 @@ stash@{2}: WIP on main: 5002d47 our new homepage
 
 $ git stash pop stash@{2}
 ```
+
 ---
 
 ### Flujo de trabajo recomendado
