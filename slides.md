@@ -223,6 +223,53 @@ El mensaje de un `commit` consiste en 3 diferentes partes separadas por una line
 > 💡 En caso de querer sobrescribir el commit utiliza el comando
 `git commit -ammend -m <title> -m <description>`
 
+---
+
+### Recomendaciones para un buen commit
+
+- Especifica el tipo de commit:
+- Separa el título del cuerpo del mensaje con una línea en blanco.
+- Tu mensaje de commit no debería contener ningún mensaje de espacios en blanco.
+- Quita signos de puntuación innecesarios.
+- No termines el título con un punto.
+- Usa mayúsculas al inicio del título y por cada párrafo del cuerpo del mensaje.
+- Usa el modo imperativo en el título.
+- Usa el cuerpo del mensaje para explicar cuáles cambios has hecho y por qué los hiciste.
+- No asumas que las personas que revisará el código entiende cuál era el problema original, asegúrate de agregar la información necesaria.
+- No piense que tu código se explica solo.
+- Sigue la convención del mensaje de commit definida por tu equipo.
+
+---
+
+```bash
+Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+or "Fixes bug."  This convention matches up with commit messages generated
+by commands like git merge and git revert.
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+
+- Typically a hyphen or asterisk is used for the bullet, followed by a
+  single space, with blank lines in between, but conventions vary here
+
+- Use a hanging indent
+
+If you use an issue tracker, add a reference(s) to them at the bottom,
+like so:
+```
+
+---
+
 ### Regresar a otro commit
 
 ```bash{none|1-2|4-5|all}
